@@ -1,18 +1,13 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import db from '@/configs/database.config'
-
-export interface ISeller {
-  id: number;
-  name: string;
-  rating: number;
-}
+import ISeller from '@/domain/entities/ISeller'
 
 export interface ISellerCreate extends Optional<ISeller, 'id' | 'rating'> {}
 
 export class Seller extends Model<ISeller, ISellerCreate> {
-  public id: number
-  public name: string
-  public rating: number
+  declare id: number
+  declare name: string
+  declare rating: number
 }
 
 Seller.init(
@@ -35,7 +30,8 @@ Seller.init(
   },
   {
     sequelize: db,
-    tableName: 'sellers'
+    tableName: 'sellers',
+    timestamps: false
   }
 )
 

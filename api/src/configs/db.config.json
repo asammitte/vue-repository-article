@@ -1,0 +1,10 @@
+{
+  "development": {
+    "storage": "./database.sqlite3",
+    "dialect": "sqlite",
+    "database": "marketplace",
+    "migrationStorageTableName": "sequelize_migrations",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_seeds"
+  }
+}

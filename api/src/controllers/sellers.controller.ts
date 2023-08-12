@@ -1,11 +1,11 @@
-import createSellerCommand from '@/services/sellers/commands/createSeller.service'
+import sellerCreateCommand from '@/services/sellers/commands/createSeller.service'
+import sellerGetAllQuery from '@/services/sellers/queries/getPaginatedSellers.service'
 
 import { NextFunction, Request, Response } from "express";
 
 async function get(req: Request, res: Response, next: NextFunction) {
   try {
-      // res.json(await programmingLanguages.getMultiple(req.query.page));
-      res.json("it's alive");
+      res.json(await sellerGetAllQuery())
   } catch (err) {
       console.error(`Error while getting sellers`);
       next(err);
@@ -14,7 +14,7 @@ async function get(req: Request, res: Response, next: NextFunction) {
 
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
-    res.json(await createSellerCommand(req.body));
+    res.json(await sellerCreateCommand(req.body));
     // console.log(req.body)
     // res.json('create seller endpoint')
   } catch (err) {

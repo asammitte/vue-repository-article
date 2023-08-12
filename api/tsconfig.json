@@ -1,7 +1,6 @@
 {
-  // "include": ["src/", "tests/**/*.ts"],
-  "extends": "@tsconfig/node16/tsconfig.json",
   "include": ["src/**/*"],
+  "extends": "@tsconfig/node16/tsconfig.json",
   "exclude": ["node_modules"],
   "compilerOptions": {
     "moduleResolution": "node",
@@ -19,6 +18,7 @@
       "@/*": ["./src/*"]
     },
     "types": [
+      "@types/node",
       "node"
     ]
   }

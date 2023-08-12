@@ -2,11 +2,16 @@
   "name": "api",
   "version": "0.0.1",
   "description": "Simple backend for our vue-repository project.",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "build": "npx tsc",
     "dev": "nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/server.ts",
+    "migration:create": "npx sequelize migration:create --migrations-path ./src/infrastructure/persistence/migrations",
+    "db:migrate": "npx sequelize db:migrate --migrations-path ./src/infrastructure/persistence/migrations --config ./src/configs/db.config.json",
+    "db:seed": "npx sequelize db:seed:all --seeders-path ./src/infrastructure/persistence/seeders --config ./src/configs/db.config.json",
+    "seed:generate": "npx sequelize seed:generate --migrations-path ./src/infrastructure/persistence/migrations --models-path ./src/infrastructure/persistence/models --seeders-path ./src/infrastructure/persistence/seeders",
     "start": "node dist/server.js",
+    "sqlite3": "npx sqlite3 ./database.sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,13 +25,15 @@
     "express": "^4.18.2",
     "jest": "^29.6.2",
     "sequelize": "^6.32.1",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "umzug": "^3.3.1"
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.0",
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.9",
     "nodemon": "^3.0.1",
+    "sequelize-cli": "^6.6.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"

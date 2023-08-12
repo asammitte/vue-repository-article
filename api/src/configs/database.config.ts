@@ -1,7 +1,8 @@
 import { Sequelize } from 'sequelize'
 
 const db = new Sequelize('app', '', '', {
-  database: './database.sqlite',
+  database: 'marketplace',
+  host: './database.sqlite3',
   dialect: 'sqlite',
   logging: true
 })
