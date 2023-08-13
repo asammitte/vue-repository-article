@@ -1,8 +1,9 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", ".sequelizerc"],
   "extends": "@tsconfig/node16/tsconfig.json",
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,6 +13,7 @@
     "target": "ES2016",
     "module": "CommonJS",
     "rootDir": "./",
+    "rootDirs": ["src"],
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {

@@ -1,5 +1,9 @@
+if(!process.env.IS_TS_NODE) {
+  require('module-alias/register');
+}
+
 import express, { Express, Request, Response, json } from 'express'
-import sellersRouter from './routes/sellers.route'
+import sellersRouter from '@/routes/sellers.route'
 import db from '@/configs/database.config'
 import { migrator } from '@/infrastructure/persistence/migrator'
 

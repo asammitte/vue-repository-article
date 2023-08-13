@@ -3,7 +3,7 @@ import db from '@/configs/database.config'
 
 export const migrator = new Umzug({
 	migrations: {
-		glob: ['migrations/*.js', { cwd: __dirname }],
+		glob: ['migrations/*.ts', { cwd: __dirname }],
 	},
 	context: db,
 	storage: new SequelizeStorage({
