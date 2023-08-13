@@ -34,4 +34,4 @@ npm-debug.log
 
 .env
 
-.database.sqlite3
+database.sqlite3
