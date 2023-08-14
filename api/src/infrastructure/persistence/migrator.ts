@@ -1,9 +1,10 @@
 import { Umzug, SequelizeStorage } from 'umzug'
-import db from '@/configs/database.config'
+import { db } from '@/infrastructure/persistence/databaseInit'
+import { sequelize } from './models'
 
 export const migrator = new Umzug({
 	migrations: {
-		glob: ['migrations/*.ts', { cwd: __dirname }],
+		glob: ['migrations/*.js', { cwd: __dirname }],
 	},
 	context: db,
 	storage: new SequelizeStorage({

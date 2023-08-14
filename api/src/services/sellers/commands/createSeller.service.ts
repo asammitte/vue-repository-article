@@ -1,5 +1,5 @@
 import { ISellerCreate } from "@/infrastructure/persistence/models/seller.model"
-import * as sellerDal from '@/infrastructure/persistence/dal/sellers.dal'
+import * as sellerDal from '@/infrastructure/persistence/repository/sellers.repository'
 import ISeller from "@/domain/entities/ISeller"
 
 const createSellerCommand = async (payload: ISellerCreate): Promise<ISeller> => {

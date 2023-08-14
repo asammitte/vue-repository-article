@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize"
-import db from '@/configs/database.config'
+import { db } from '@/infrastructure/persistence/databaseInit'
 import ISeller from '@/domain/entities/ISeller'
 
 export interface ISellerCreate extends Optional<ISeller, 'id' | 'rating'> {}

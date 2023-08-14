@@ -1,5 +1,5 @@
 import { Umzug, SequelizeStorage } from 'umzug'
-import db from '@/configs/database.config'
+import { db } from '@/infrastructure/persistence/databaseInit'
 
 export const migrator = new Umzug({
 	migrations: {
