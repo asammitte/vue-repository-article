@@ -1,7 +1,7 @@
 import { Seller, ISellerCreate } from "@/infrastructure/persistence/models/seller.model"
 import ISeller from "@/domain/entities/ISeller"
-import OrderDirectionEnum from "@/domain/enums/orderDirection.enum"
-import SellerSortfieldEnum from "@/domain/enums/sellerSortfield.enum"
+import OrderDirectionEnum from "@/domain/enums/order-direction.enum"
+import SellerSortfieldEnum from "@/domain/enums/seller-sortfield.enum"
 
 export const getAll = async (
     pageIndex: number = 1,

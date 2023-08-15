@@ -35,3 +35,5 @@ npm-debug.log
 .env
 
 database.sqlite3
+
+package-alt.json

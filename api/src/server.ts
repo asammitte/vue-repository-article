@@ -3,20 +3,18 @@ if (!process.env.IS_TS_NODE) {
   require('module-alias/register')
 }
 
-import express, { Express, Request, Response, json } from 'express'
-import sellersRouter from '@/routes/sellers.route'
+import apiErrorHandler from '@/presentation/error/api-error-handler'
+import express, { Express, json } from 'express'
 import { dbInit } from '@/infrastructure/persistence/databaseInit'
+import routes from '@/presentation/main.router'
 
 const app: Express = express()
 const port = 5051
 
 app.use(json())
 
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'ok' })
-})
-
-app.use('/sellers', sellersRouter)
+routes(app)
+app.use(apiErrorHandler)
 
 const start = async () => {
   try {
@@ -25,7 +23,6 @@ const start = async () => {
       console.log(`[Server]: running at http://localhost:${port}`)
     })
   } catch (error) {
-      console.log(error);
       console.log('Failed to connect to the database, server is not running.');
   }
 }
