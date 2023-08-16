@@ -2,7 +2,7 @@ import OrderDirectionEnum from '@/domain/enums/order-direction.enum'
 import SellerSortfieldEnum from '@/domain/enums/seller-sortfield.enum'
 import sellerCreateCommand from '@/application/sellers/commands/create-seller.service'
 import sellerGetAllQuery from '@/application/sellers/queries/getPaginated/get-paginated-sellers.service'
-import GetPaginatedSellersDto, { IGetPaginatedSellers } from '@/presentation/sellers/dto/get-paginated-sellres.dto'
+import GetPaginatedSellersDto, { IGetPaginatedSellers } from '@/presentation/modules/sellers/dto/get-paginated-sellres.dto'
 
 import { NextFunction, Request, Response } from "express";
 
@@ -16,7 +16,7 @@ const getAll = async (
     pageSize,
     sortfield,
     orderDirection
-  } = <IGetPaginatedSellers>Object(req.query)
+  } = <IGetPaginatedSellers>Object(req.query) // I don't like casting this way, but for article it's ok
   const sellers = await sellerGetAllQuery(pageIndex, pageSize, sortfield, orderDirection)
   res.json(sellers)
 }

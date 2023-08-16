@@ -3,14 +3,14 @@ if (!process.env.IS_TS_NODE) {
   require('module-alias/register')
 }
 
-import apiErrorHandler from '@/presentation/error/api-error-handler'
+import apiErrorHandler from '@/presentation/errors/api-error-handler'
 import express, { Express, json } from 'express'
 import { dbInit } from '@/infrastructure/persistence/databaseInit'
+import 'dotenv/config'
 import routes from '@/presentation/main.router'
 
 const app: Express = express()
-const port = 5051
-
+app.set('port', process.env.PORT)
 app.use(json())
 
 routes(app)
@@ -19,6 +19,7 @@ app.use(apiErrorHandler)
 const start = async () => {
   try {
     await dbInit()
+    const port = app.get('port')
     app.listen(port, '0.0.0.0', () => {
       console.log(`[Server]: running at http://localhost:${port}`)
     })

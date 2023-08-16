@@ -1,6 +1,8 @@
+// sequelize-cli does NOT accept *.ts files, only *.json or *.js
+// so I'll go with JS this time
 require('dotenv').config()
 
-module.exports = {
+export default {
   development: {
     dialect: 'sqlite',
     storage: './database.sqlite3',

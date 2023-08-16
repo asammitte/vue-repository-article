@@ -1,4 +1,4 @@
-class ApiError {
+class BadRequestError {
   private _code: number;
   private _message: unknown;
 
@@ -16,8 +16,8 @@ class ApiError {
   }
 
   static badRequest(msg: unknown) {
-    return new ApiError(400, msg)
+    return new BadRequestError(400, msg)
   }
 }
 
-export default ApiError
+export default BadRequestError
