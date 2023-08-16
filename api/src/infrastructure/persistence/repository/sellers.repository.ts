@@ -21,6 +21,6 @@ export const getAll = async (
 
 export const create = async (payload: ISellerCreate): Promise<ISeller> => {
   Seller.getAttributes().name.field
-  const ingredient = await Seller.create(payload)
-  return ingredient
+  const seller = await Seller.create(payload)
+  return seller
 }

@@ -4,7 +4,7 @@ import ISeller from '@/domain/entities/ISeller'
 
 export interface ISellerCreate extends Optional<ISeller, 'id' | 'rating'> {}
 
-export class Seller extends Model<ISeller, ISellerCreate> {
+export class Seller extends Model<ISeller, ISellerCreate> implements ISeller {
   declare id: number
   declare name: string
   declare rating: number
