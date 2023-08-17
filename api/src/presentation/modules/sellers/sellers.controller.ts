@@ -1,10 +1,10 @@
 import { IGetPaginatedSellers } from '@/presentation/modules/sellers/dto/get-paginated-sellres.dto'
-import { NextFunction, Request, Response, ValidatedRequest } from "express";
+import { NextFunction, Request, Response } from "express";
 import sellerCreateCommand from '@/application/sellers/commands/create-seller.service'
 import sellerGetAllQuery from '@/application/sellers/queries/getPaginated/get-paginated-sellers.service'
 
 const getAll = async (
-  req: ValidatedRequest<IGetPaginatedSellers>,
+  req: Request<IGetPaginatedSellers>,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
@@ -13,7 +13,7 @@ const getAll = async (
     pageSize,
     sortfield,
     orderDirection
-  } = req.validatedData
+  } = req.params
   const sellers = await sellerGetAllQuery(pageIndex, pageSize, sortfield, orderDirection)
   res.json(sellers)
 }
