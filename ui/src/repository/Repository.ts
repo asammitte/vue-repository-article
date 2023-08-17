@@ -1,5 +1,5 @@
 import { AxiosError, type AxiosInstance } from 'axios'
-import { type IRepository } from '@/interfaces/repository/IRepository'
+import { type IRepository } from '@/interfaces/repositories/IRepository'
 
 export class Repository implements IRepository {
   private httpClient: AxiosInstance;
