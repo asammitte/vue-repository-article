@@ -8,12 +8,8 @@ const getAll = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const {
-    pageIndex,
-    pageSize,
-    sortfield,
-    orderDirection
-  } = req.params
+  const { pageIndex, pageSize, sortfield, orderDirection } = req.params
+
   const sellers = await sellerGetAllQuery(pageIndex, pageSize, sortfield, orderDirection)
   res.json(sellers)
 }

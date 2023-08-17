@@ -12,7 +12,7 @@ export const validateDto = (schema: AnySchema): any => {
       }, {
         abortEarly: false
       })
-      req = validateQuery
+      req.params = validateQuery.query
       next()
     } catch (error) {
       next(BadRequestError.badRequest(error))
