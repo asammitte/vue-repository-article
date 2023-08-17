@@ -25,5 +25,8 @@
       "@types/node",
       "node"
     ]
-  }
+  },
+  "files": [
+    "/src/types/index.d.ts"
+  ]
 }

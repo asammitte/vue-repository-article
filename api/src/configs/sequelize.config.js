@@ -2,7 +2,7 @@
 // so I'll go with JS this time
 require('dotenv').config()
 
-export default {
+module.exports = {
   development: {
     dialect: 'sqlite',
     storage: './database.sqlite3',
