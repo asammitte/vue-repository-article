@@ -8,6 +8,7 @@ export class Seller extends Model<ISeller, ISellerCreate> implements ISeller {
   declare id: number
   declare name: string
   declare rating: number
+  declare soldItems: number
 }
 
 Seller.init(
@@ -26,7 +27,12 @@ Seller.init(
       type: DataTypes.TINYINT,
       allowNull: false,
       defaultValue: 0
-    }
+    },
+    soldItems: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
   },
   {
     sequelize: db,

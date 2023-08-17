@@ -19,6 +19,11 @@ const up = async (queryInterface, Sequelize) => {
         type: Sequelize.DataTypes.TINYINT,
         allowNull: false,
         defaultValue: 0
+      },
+      soldItems: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
       }
     }
   )
