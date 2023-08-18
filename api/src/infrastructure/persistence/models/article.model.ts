@@ -1,17 +1,17 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { db } from '@/infrastructure/persistence/databaseInit'
-import ISeller from '@/domain/entities/ISeller'
+import IArticle from '@/domain/entities/IArticle'
 
-export interface ISellerCreate extends Optional<ISeller, 'id' | 'rating'> {}
+export interface IArticleCreate extends Optional<IArticle, 'id' | 'rating'> {}
 
-export class Seller extends Model<ISeller, ISellerCreate> implements ISeller {
+export class Article extends Model<IArticle, IArticleCreate> implements IArticle {
   declare id: number
   declare name: string
   declare rating: number
   declare soldItems: number
 }
 
-Seller.init(
+Article.init(
   {
     id: {
       type: DataTypes.BIGINT,
@@ -36,9 +36,9 @@ Seller.init(
   },
   {
     sequelize: db,
-    tableName: 'sellers',
+    tableName: 'articles',
     timestamps: false
   }
 )
 
-export default Seller
+export default Article

@@ -1,7 +1,7 @@
-import type { ISellersRepository } from '@/interfaces/repositories/ISellersRepository'
+import type { IArticlesRepository } from '@/interfaces/repositories/IArticlesRepository'
 
 interface IApi {
-  sellers: ISellersRepository
+  articles: IArticlesRepository
 }
 
 export { type IApi }

@@ -1,19 +1,19 @@
 import OrderDirectionEnum from '@/domain/enums/order-direction.enum'
-import SellerSortfieldEnum from '@/domain/enums/seller-sortfield.enum'
+import ArticleSortfieldEnum from '@/domain/enums/article-sortfield.enum'
 import { object, mixed, number } from 'yup'
 
-export interface IGetPaginatedSellers {
+export interface IGetPaginatedArticles {
   pageIndex: number
   pageSize: number
-  sortfield: SellerSortfieldEnum
+  sortfield: ArticleSortfieldEnum
   orderDirection: OrderDirectionEnum
 }
 
 export default object({
-  query: object<IGetPaginatedSellers>({
+  query: object<IGetPaginatedArticles>({
     pageIndex: number().default(1),
     pageNumber: number().default(10).required(),
-    sortfield: mixed<SellerSortfieldEnum>().oneOf(Object.values(SellerSortfieldEnum)),
+    sortfield: mixed<ArticleSortfieldEnum>().oneOf(Object.values(ArticleSortfieldEnum)),
     orderDirection: mixed<OrderDirectionEnum>().oneOf(Object.values(OrderDirectionEnum))
   })
 })

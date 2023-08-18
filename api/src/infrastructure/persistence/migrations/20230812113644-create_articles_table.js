@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 const up = async (queryInterface, Sequelize) => {
 	await queryInterface.createTable(
-    'sellers',
+    'articles',
     {
       id: {
         type: Sequelize.DataTypes.BIGINT,
@@ -30,7 +30,7 @@ const up = async (queryInterface, Sequelize) => {
 }
 
 const down = async (queryInterface) => {
-  await queryInterface.dropTable('sellers')
+  await queryInterface.dropTable('articles')
 }
 
 module.exports = { up, down }

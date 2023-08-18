@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface: QueryInterface): Promise<void> => queryInterface.sequelize.transaction(
       async (transaction) => {
         await queryInterface.createTable(
-          'sellers',
+          'articles',
           {
             id: {
               type: DataTypes.BIGINT,

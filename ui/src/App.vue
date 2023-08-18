@@ -6,12 +6,12 @@ import { RouterLink } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Sellers</RouterLink>
-        <RouterLink to="/about">Products</RouterLink>
+        <RouterLink to="/">Articles</RouterLink>
+        <RouterLink to="/products">Products</RouterLink>
       </nav>
     </div>
   </header>
-  <div class="main-content">
+  <div class="page-content">
     <RouterView />
   </div>
 </template>

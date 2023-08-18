@@ -1,8 +1,8 @@
 import OrderDirectionEnum from "@/domain/enums/order-direction.enum"
-import SellerSortfieldEnum from "@/domain/enums/seller-sortfield.enum"
+import ArticleSortfieldEnum from "@/domain/enums/article-sortfield.enum"
 import { badRequestError, internalServerError } from "@/presentation/docs/errors.doc"
 
-const paginatedSellerItemResponse = {
+const paginatedArticleItemResponse = {
   id: {
     type: 'int',
     example: 1,
@@ -17,9 +17,9 @@ const paginatedSellerItemResponse = {
   },
 }
 
-const getPaginatedSellers = {
-  tags: ['Sellers'],
-  description: 'Retrieve all sellers',
+const getPaginatedArticles = {
+  tags: ['Articles'],
+  description: 'Retrieve all articles',
   operationId: 'get',
   security: [
     {
@@ -49,7 +49,7 @@ const getPaginatedSellers = {
       type: 'string',
       schema: {
         type: 'string',
-        enum: Object.values(SellerSortfieldEnum)
+        enum: Object.values(ArticleSortfieldEnum)
       }
     },
     {
@@ -65,14 +65,14 @@ const getPaginatedSellers = {
   ],
   responses: {
     '200': {
-      description: 'Sellers retrieved successfully!',
+      description: 'Articles retrieved successfully!',
       content: {
         'application/json': {
           schema: {
             type: 'array',
             items: {
               type: 'object',
-              properties: paginatedSellerItemResponse,
+              properties: paginatedArticleItemResponse,
             },
           },
         },
@@ -83,4 +83,4 @@ const getPaginatedSellers = {
   },
 }
 
-export { getPaginatedSellers }
+export { getPaginatedArticles }

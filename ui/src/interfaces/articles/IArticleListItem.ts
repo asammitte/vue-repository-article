@@ -1,8 +1,6 @@
-export interface ISeller {
+export interface IArticleListItem {
   id: number
   name: string
   rating: number
   soldItems: number
 }
-
-export default ISeller

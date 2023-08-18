@@ -1,7 +1,7 @@
 import axios, { AxiosError, type CreateAxiosDefaults } from 'axios'
 import { inject, type App, type Plugin } from 'vue'
 import type { IApi } from '@/interfaces/common/IApi'
-import { SellersRepository } from '@/repository/SellersRepository'
+import { ArticlesRepository } from '@/repository/ArticlesRepository'
 
 const injectionKey = Symbol('http')
 
@@ -33,7 +33,7 @@ const apiPlugin: Plugin = {
       })
 
       const modules: IApi = {
-        sellers: new SellersRepository(apiFetcher)
+        articles: new ArticlesRepository(apiFetcher)
       }
 
     app.provide(injectionKey, modules)

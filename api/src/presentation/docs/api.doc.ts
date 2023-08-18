@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { getPaginatedSellers } from '@/presentation/modules/sellers/docs/get-paginated-sellers.doc'
+import { getPaginatedArticles } from '@/presentation/modules/articles/docs/get-paginated-articles.doc'
 
 const apiDocumentation = {
   openapi: '3.0.1',
@@ -26,12 +26,12 @@ const apiDocumentation = {
   ],
   tags: [
     {
-      name: 'Sellers',
+      name: 'Articles',
     },
   ],
   paths: {
-    '/sellers': {
-      get: getPaginatedSellers,
+    '/articles': {
+      get: getPaginatedArticles,
     },
   },
 }

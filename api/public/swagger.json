@@ -6,7 +6,7 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"ISeller": {
+			"IArticle": {
 				"properties": {
 					"id": {
 						"type": "number",
@@ -54,7 +54,7 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/ISeller"
+										"$ref": "#/components/schemas/IArticle"
 									},
 									"type": "array"
 								}
