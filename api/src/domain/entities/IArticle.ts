@@ -1,6 +1,6 @@
 export interface IArticle {
   id: number
-  author_id: number
+  authorId: number
   title: string
   content: string
 }

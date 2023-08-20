@@ -6,8 +6,8 @@ export interface IAuthorCreate extends Optional<IAuthor, 'id'> {}
 
 export class Author extends Model<IAuthor, IAuthorCreate> implements IAuthor {
   declare id: number
-  declare first_name: string
-  declare last_name: string
+  declare firstName: string
+  declare lastName: string
 }
 
 Author.init(
@@ -18,11 +18,13 @@ Author.init(
       autoIncrement: true,
       allowNull: false
     },
-    first_name: {
+    firstName: {
+      field: 'last_name',
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+    lastName: {
+      field: 'last_name',
       type: DataTypes.STRING,
       allowNull: false
     },
