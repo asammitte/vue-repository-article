@@ -6,7 +6,7 @@ import ArticleSortfieldEnum from "@/domain/enums/article-sortfield.enum"
 export const getAll = async (
     pageIndex: number = 1,
     pageSize: number = 10,
-    sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Name,
+    sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Title,
     orderDirection: OrderDirectionEnum = OrderDirectionEnum.Asc
   ): Promise<IArticle[]> => {
     const offset = (pageIndex - 1) * pageSize
@@ -20,7 +20,7 @@ export const getAll = async (
 }
 
 export const create = async (payload: IArticleCreate): Promise<IArticle> => {
-  Article.getAttributes().name.field
+  Article.getAttributes().title.field
   const article = await Article.create(payload)
   return article
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ArticlesList from '@/components/articles/ArticlesList.vue'
+import TopAuthors from '@/components/authors/TopAuthors.vue';
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import ArticlesList from '@/components/articles/ArticlesList.vue'
       <ArticlesList />
     </div>
     <div class="page-content-right">
-      111
+      <TopAuthors />
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@
     "migration:create": "npx sequelize migration:create --migrations-path ./src/infrastructure/persistence/migrations",
     "db:migrate": "npx sequelize db:migrate",
     "db:seed": "npx sequelize db:seed:all",
-    "seed:generate": "npx sequelize seed:generate --migrations-path ./src/infrastructure/persistence/migrations --models-path ./src/infrastructure/persistence/models --seeders-path ./src/infrastructure/persistence/seeders",
+    "seed:generate": "npx sequelize seed:generate",
     "start": "node dist/src/server.js",
     "sqlite3": "sqlite3 ./database.sqlite3",
     "test": "echo \"Error: no test specified\" && exit 1"

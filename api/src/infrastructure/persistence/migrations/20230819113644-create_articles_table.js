@@ -11,6 +11,14 @@ const up = async (queryInterface, Sequelize) => {
         autoIncrement: true,
         allowNull: false
       },
+      author_id: {
+        type: Sequelize.DataTypes.BIGINT,
+        allowNull: false,
+        references: {
+          model: 'authors',
+          key: 'id'
+        }
+      },
       name: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false

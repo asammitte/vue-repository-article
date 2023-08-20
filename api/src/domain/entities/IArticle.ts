@@ -1,8 +1,8 @@
 export interface IArticle {
   id: number
-  name: string
-  rating: number
-  soldItems: number
+  author_id: number
+  title: string
+  content: string
 }
 
 export default IArticle

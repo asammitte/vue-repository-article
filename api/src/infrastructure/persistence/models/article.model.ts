@@ -2,13 +2,13 @@ import { DataTypes, Model, Optional } from "sequelize"
 import { db } from '@/infrastructure/persistence/databaseInit'
 import IArticle from '@/domain/entities/IArticle'
 
-export interface IArticleCreate extends Optional<IArticle, 'id' | 'rating'> {}
+export interface IArticleCreate extends Optional<IArticle, 'id'> {}
 
 export class Article extends Model<IArticle, IArticleCreate> implements IArticle {
   declare id: number
-  declare name: string
-  declare rating: number
-  declare soldItems: number
+  declare author_id: number
+  declare title: string
+  declare content: string
 }
 
 Article.init(
@@ -19,20 +19,23 @@ Article.init(
       autoIncrement: true,
       allowNull: false
     },
-    name: {
+    author_id: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      references: {
+        model: 'authors',
+        key: 'id'
+      },
+    },
+    title: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    rating: {
-      type: DataTypes.TINYINT,
-      allowNull: false,
-      defaultValue: 0
-    },
-    soldItems: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
-    },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: ''
+    }
   },
   {
     sequelize: db,
