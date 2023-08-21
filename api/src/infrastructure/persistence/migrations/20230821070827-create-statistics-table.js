@@ -19,14 +19,9 @@ const up = async (queryInterface, Sequelize) => {
         type: Sequelize.DataTypes.BIGINT,
         allowNull: false
       },
-      rating: {
+      likes: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 0
-      },
-      total_articles: {
-        type: Sequelize.DataTypes.INTEGER,
-        allowNull: true,
         defaultValue: 0
       }
     }

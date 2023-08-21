@@ -9,8 +9,7 @@ export class Statistic extends Model<IStatistic, IStatisticCreate> implements IS
   declare id: number
   declare parentType: StatisticTypeEnum
   declare parentId: number
-  declare rating: number
-  declare totalArticles: number
+  declare likes: number
 }
 
 Statistic.init(
@@ -31,16 +30,11 @@ Statistic.init(
       type: DataTypes.SMALLINT,
       allowNull: false
     },
-    rating: {
-      field: 'rating',
+    likes: {
+      field: 'likes',
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    totalArticles: {
-      field: 'total_articles',
-      type: DataTypes.INTEGER,
-      allowNull: true
-    }
   },
   {
     sequelize: db,

@@ -4,8 +4,7 @@ export interface IStatistic {
   id: number
   parentType: StatisticTypeEnum
   parentId: number
-  rating: number
-  totalArticles: number
+  likes: number
 }
 
 export default IStatistic
