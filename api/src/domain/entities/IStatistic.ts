@@ -1,4 +1,4 @@
-import { StatisticTypeEnum } from "@domain/enums/statistic-type-enum"
+import { StatisticTypeEnum } from "@/domain/enums/statistic-type.enum"
 
 export interface IStatistic {
   id: number

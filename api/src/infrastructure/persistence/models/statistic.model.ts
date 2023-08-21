@@ -34,12 +34,12 @@ Statistic.init(
     rating: {
       field: 'rating',
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     totalArticles: {
       field: 'total_articles',
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   },
   {

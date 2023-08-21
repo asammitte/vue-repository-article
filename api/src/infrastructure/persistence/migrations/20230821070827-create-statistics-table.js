@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 const up = async (queryInterface, Sequelize) => {
 	await queryInterface.createTable(
-    'articles',
+    'statistics',
     {
       id: {
         type: Sequelize.DataTypes.BIGINT,
@@ -11,29 +11,30 @@ const up = async (queryInterface, Sequelize) => {
         autoIncrement: true,
         allowNull: false
       },
-      author_id: {
-        type: Sequelize.DataTypes.BIGINT,
-        allowNull: false,
-        references: {
-          model: 'authors',
-          key: 'id'
-        }
-      },
-      title: {
-        type: Sequelize.DataTypes.STRING,
+      parent_type: {
+        type: Sequelize.DataTypes.SMALLINT,
         allowNull: false
       },
-      content: {
-        type: Sequelize.DataTypes.TEXT,
+      parent_id: {
+        type: Sequelize.DataTypes.BIGINT,
+        allowNull: false
+      },
+      rating: {
+        type: Sequelize.DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+      },
+      total_articles: {
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: true,
-        defaultValue: ''
+        defaultValue: 0
       }
     }
   )
 }
 
 const down = async (queryInterface) => {
-  await queryInterface.dropTable('articles')
+  await queryInterface.dropTable('statistics')
 }
 
 module.exports = { up, down }

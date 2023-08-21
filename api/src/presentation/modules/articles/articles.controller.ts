@@ -1,4 +1,4 @@
-import { IGetPaginatedArticles } from '@/presentation/modules/articles/dto/get-paginated-articles.dto'
+import { IGetPaginatedArticles } from '@/presentation/modules/articles/dto/get-paginated-articles.request'
 import { NextFunction, Request, Response } from "express";
 import articleCreateCommand from '@/application/articles/commands/create-article.service'
 import articleGetAllQuery from '@/application/articles/queries/getPaginated/get-paginated-articles.service'

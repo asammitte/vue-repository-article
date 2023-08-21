@@ -2,7 +2,7 @@ import BadRequestError from "@/presentation/errors/bad-request.error"
 import { NextFunction, Request, Response } from "express"
 import { AnySchema } from "yup"
 
-export const validateDto = (schema: AnySchema): any => {
+export const validateRequest = (schema: AnySchema): any => {
   return async(req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const validateQuery = await schema.validate({
@@ -20,4 +20,4 @@ export const validateDto = (schema: AnySchema): any => {
   }
 }
 
-export default validateDto
+export default validateRequest

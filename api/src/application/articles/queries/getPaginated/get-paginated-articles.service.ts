@@ -6,7 +6,7 @@ import * as articleDal from '@/infrastructure/persistence/repository/articles.re
 const getArticles = async (
   pageIndex: number = 1,
   pageSize: number = 10,
-  sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Name,
+  sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Title,
   orderDirection: OrderDirectionEnum = OrderDirectionEnum.Asc
 ): Promise<IArticle[]> => {
   return await articleDal.getAll(pageIndex, pageSize, sortfield, orderDirection)

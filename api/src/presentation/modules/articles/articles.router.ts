@@ -1,10 +1,10 @@
 import express from 'express'
 import articlesController from '@/presentation/modules/articles/articles.controller'
-import validateDto from '@/presentation/middlewares/validate-dto.middleware'
-import paginatedArticlesDto from './dto/get-paginated-articles.dto'
+import validateRequest from '@/presentation/middlewares/validate-request.middleware'
+import paginatedArticlesRequest from './dto/get-paginated-articles.request'
 
 const router = express.Router();
 
-router.get('/', validateDto(paginatedArticlesDto), articlesController.getAll)
+router.get('/', validateRequest(paginatedArticlesRequest), articlesController.getAll)
 
 export default router

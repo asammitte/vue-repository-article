@@ -1,6 +1,6 @@
 export enum ArticleSortfieldEnum {
   Id = 'id',
-  Title = 'name'
+  Title = 'title'
 }
 
 export default ArticleSortfieldEnum
