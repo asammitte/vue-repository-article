@@ -8,7 +8,7 @@ export class ArticlesRepository extends Repository implements IArticlesRepositor
   async getAll(
     pageIndex: number = 1,
     pageSize: number = 10,
-    sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Name,
+    sortfield: ArticleSortfieldEnum = ArticleSortfieldEnum.Title,
     orderDirection: OrderDirectionEnum = OrderDirectionEnum.Asc
   ): Promise<IArticleListItem[]> {
     return await this.call<IArticleListItem[]>(
@@ -21,9 +21,5 @@ export class ArticlesRepository extends Repository implements IArticlesRepositor
         orderDirection: orderDirection
       }
     )
-  }
-  
-  async getPopular(amount: number): Promise<IArticleListItem[]> {
-    return await this.getAll(1, amount, ArticleSortfieldEnum.Rating, OrderDirectionEnum.Desc)
   }
 }

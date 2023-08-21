@@ -9,6 +9,4 @@ export interface IArticlesRepository {
       sortfield?: ArticleSortfieldEnum,
       orderDirection?: OrderDirectionEnum
     ) => Promise<IArticleListItem[]>
-
-  getPopular: (amount: number) => Promise<IArticleListItem[]>
 }
