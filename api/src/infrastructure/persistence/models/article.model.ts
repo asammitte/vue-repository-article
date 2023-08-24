@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { db } from '@/infrastructure/persistence/databaseInit'
+import Author from "@/infrastructure/persistence/models/author.model"
 import IArticle from '@/domain/entities/IArticle'
 
 export interface IArticleCreate extends Optional<IArticle, 'id'> {}
@@ -44,5 +45,7 @@ Article.init(
     timestamps: false
   }
 )
+
+Article.belongsTo(Author)
 
 export default Article
