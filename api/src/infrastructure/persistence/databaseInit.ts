@@ -16,5 +16,3 @@ export const dbInit = async(): Promise<void> => {
     // .then(() => migrator.up())
     // .then(() => console.log('Migrations successfully executed'))
 }
-
-// export default db
