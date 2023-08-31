@@ -7,6 +7,7 @@ export interface IPaginatedArticleItem {
   content: string
   first_name: string
   last_name: string
+  likes: number
 }
 
 export interface IArticlesRepository {

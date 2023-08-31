@@ -3,6 +3,7 @@ import { IPaginatedArticleItem } from '@/application/interfaces/IArticlesReposit
 import { QueryTypes } from "sequelize"
 import OrderDirectionEnum from "@/domain/enums/order-direction.enum"
 import ArticleSortfieldEnum from "@/domain/enums/article-sortfield.enum"
+import StatisticTypeEnum from '@/domain/enums/statistic-type.enum'
 
 export const getAll = async (
   pageIndex: number = 1,
@@ -14,8 +15,10 @@ export const getAll = async (
   const direction = orderDirection == OrderDirectionEnum.Asc ? 'ASC' : 'DESC'
 
   const response = await db.query<IPaginatedArticleItem>(`\
-SELECT articles.id AS id, title, content, first_name, last_name \
-FROM articles JOIN authors au ON articles.author_id = au.id \
+SELECT articles.id AS id, title, content, first_name, last_name, likes \
+FROM articles \
+JOIN authors au ON articles.author_id = au.id \
+JOIN statistics ON articles.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Article} \ 
 ORDER BY :sortfield ${direction} \
 LIMIT :limit OFFSET :offset \
   `, { 
