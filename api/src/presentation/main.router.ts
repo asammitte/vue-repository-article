@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express'
 
 export const routes = (app: Express): void => {
   app.use('/', indexRouter)
-  app.use('/articles', articlesRouter)
+  app.use('/:version/articles', articlesRouter)
   app.use('/apidoc', swaggerUi.serve, swaggerUi.setup(apiDocumentation))
 }
 
