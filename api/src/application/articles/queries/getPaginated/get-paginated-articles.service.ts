@@ -1,7 +1,6 @@
-import IArticle from '@/domain/entities/IArticle'
-import OrderDirectionEnum from '@/domain/enums/order-direction.enum'
 import { IArticlesRepository } from '@/application/interfaces/IArticlesRepository'
 import ArticleSortfieldEnum from '@/domain/enums/article-sortfield.enum'
+import OrderDirectionEnum from '@/domain/enums/order-direction.enum'
 import PaginatedArticleListItemDto from '@/application/articles/queries/getPaginated/paginated-article-list-item.dto'
 
 const getArticles = (articlesRepository: IArticlesRepository) => async (
