@@ -6,16 +6,16 @@ import getPaginatedArticles from '@/application/articles/queries/getPaginated/ge
 
 const getPaginated = {
   v1: async (
-      req: Request<IGetPaginatedArticles>,
-      res: Response,
-      next: NextFunction
-    ): Promise<void> => {
-      const { pageIndex, pageSize, sortfield, orderDirection } = req.params
-      const articlesRepository = new ArticlesRepository()
-      const articlesQuery = getPaginatedArticles(articlesRepository)
-      const response = await articlesQuery(pageIndex, pageSize, sortfield, orderDirection)
-      res.json(response)
-    },
+    req: Request<IGetPaginatedArticles>,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const { pageIndex, pageSize, sortfield, orderDirection } = req.params
+    const articlesRepository = new ArticlesRepository()
+    const articlesQuery = getPaginatedArticles(articlesRepository)
+    const response = await articlesQuery(pageIndex, pageSize, sortfield, orderDirection)
+    res.json(response)
+  },
 
   v2: async (
     req: Request<IGetPaginatedArticles>,

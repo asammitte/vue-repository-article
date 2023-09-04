@@ -1,12 +1,12 @@
 import 'dotenv/config'
 import { getPaginatedArticles } from '@/presentation/modules/articles/docs/get-paginated-articles.doc'
 
-const apiDocumentation = {
+const apiDocumentationV2 = {
   openapi: '3.0.1',
   info: {
-    version: '1.0.0',
-    title: 'Marketplace REST API - Documentation',
-    description: 'List of Marketplace endpoints.',
+    version: '2.0.0',
+    title: 'Articles REST API - Documentation',
+    description: 'List of Articles app endpoints.',
     termsOfService: '',
     contact: {
       name: 'Kostiantyn Pavlichenko',
@@ -20,7 +20,7 @@ const apiDocumentation = {
   },
   servers: [
     {
-      url: `http://localhost:${process.env.PORT}/`,
+      url: `http://localhost:${process.env.PORT}/v2/`,
       description: 'Local Server',
     },
   ],
@@ -36,4 +36,4 @@ const apiDocumentation = {
   },
 }
 
-export { apiDocumentation }
+export { apiDocumentationV2 }

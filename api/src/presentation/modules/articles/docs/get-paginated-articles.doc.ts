@@ -1,6 +1,6 @@
 import OrderDirectionEnum from "@/domain/enums/order-direction.enum"
 import ArticleSortfieldEnum from "@/domain/enums/article-sortfield.enum"
-import { badRequestError, internalServerError } from "@/presentation/docs/errors.doc"
+import { badRequestError, internalServerError } from "@/presentation/apidoc/docs/errors.doc"
 
 const paginatedArticleItemResponse = {
   id: {

@@ -1,8 +1,8 @@
-import express from 'express'
 import articlesController from '@/presentation/modules/articles/articles.controller'
+import express from 'express'
+import paginatedArticlesRequest from '@/presentation/modules/articles/requests/get-paginated-articles.request'
 import validateRequest from '@/presentation/middlewares/validate-request.middleware'
 import versionMiddleware from '@/presentation/middlewares/api-version.middleware'
-import paginatedArticlesRequest from './requests/get-paginated-articles.request'
 
 const router = express.Router({ mergeParams: true })
 
