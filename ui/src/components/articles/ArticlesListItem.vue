@@ -3,19 +3,19 @@ import { computed } from 'vue'
 import type { IArticleListItem } from '@/interfaces/articles/IArticleListItem';
 
 interface IProps{
-   article : IArticleListItem
+  article : IArticleListItem
 }
 
 const props = defineProps<IProps>()
 
-const articleInitials = computed(() => props.article.name.substring(0, 2))
+const userInitials = computed(() => props.article.authorName.substring(0, 2))
 </script>
 
 <template>
   <div class="item">
     <div class="article-avatar-wrapper">
       <div class="article-avatar">
-        {{  articleInitials }}
+        {{  userInitials }}
       </div>
     </div>
     <div class="article-details">
@@ -34,11 +34,7 @@ const articleInitials = computed(() => props.article.name.substring(0, 2))
   align-items: center;
   position: relative;
   border-bottom: 1px solid var(--color-border);
-}
-
-.item:hover {
-  cursor: pointer;
-  background-color: var(--color-border);
+  cursor: default;
 }
 
 .article-details {
@@ -59,7 +55,6 @@ const articleInitials = computed(() => props.article.name.substring(0, 2))
   border-radius: 8px;
   text-transform: uppercase;
 
-  /* color: var(--color-text); */
   color: black;
   background-color: var(--color-border-hover);
 }
@@ -87,24 +82,6 @@ h3 {
     width: 50px;
     height: 50px;
   }
-
-  /* .item:before {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    bottom: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:after {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    top: calc(50% + 25px);
-    height: calc(50% - 25px);
-  } */
 
   .item:first-of-type:before {
     display: none;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 // import axios from 'axios'
 import type { IArticleListItem } from '@/interfaces/articles/IArticleListItem'
 import { useHttp } from '@/plugins/api'
@@ -18,11 +18,9 @@ const fetchArticles = async (): Promise<void> => {
     .catch(ex => console.log(ex.code))
 }
 
-// const fetchArticles = async (): Promise<void> => {
-//  const promise = await axios
-//   .get<void>('users')
-//   .then(res => articles.value = res.data)
-// }
+const getDescription = (source: string, size: number = 80): string => {
+  return source.length > size ? source.slice(0, size - 1) + "…" : source
+}
 
 </script>
 
@@ -36,11 +34,16 @@ const fetchArticles = async (): Promise<void> => {
       <!-- <template #icon>
         <DocumentationIcon />
       </template> -->
-      <template #heading>{{ article.name }}</template>
+      <template #heading>{{ article.title }}</template>
 
-      <div class="article-props">
-        <div class="article-prop">Rating: <b>{{ article.rating }}</b></div>
-        <div class="article-prop">Sold items: <b>{{ article.soldItems }}</b></div>
+      <div>
+        <div>
+          {{ getDescription(article.content) }}
+        </div>
+        <div class="article-props">
+          <div class="article-prop">Author: <b>{{ article.authorName }}</b></div>
+          <div class="article-prop">Rating: <b>{{ article.totalLikes }}</b></div>
+        </div>
       </div>
     </ArticlesListItem>
   </div>
@@ -50,6 +53,7 @@ const fetchArticles = async (): Promise<void> => {
 .article-prop {
   display: inline-block;
   padding: 0 1rem;
+  font-size: 0.8rem;
 }
 
 .article-prop:first-child {

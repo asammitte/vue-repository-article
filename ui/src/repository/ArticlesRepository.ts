@@ -13,7 +13,7 @@ export class ArticlesRepository extends Repository implements IArticlesRepositor
   ): Promise<IArticleListItem[]> {
     return await this.call<IArticleListItem[]>(
       'GET',
-      '/api/articles',
+      '/api/v1/articles',
       {
         pageIndex: pageIndex,
         pageSize: pageSize,

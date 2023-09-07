@@ -1,6 +1,7 @@
 export interface IArticleListItem {
-  id: number
-  authorId: number
-  title: string
+  authorName: string
   content: string
+  id: number
+  title: string
+  totalLikes: number
 }
