@@ -1,7 +1,7 @@
 import { IAuthorsRepository } from "@/application/interfaces/IAuthorsRepository"
 import AuthorSortfieldEnum from "@/domain/enums/author-sortfield.enum"
 import OrderDirectionEnum from "@/domain/enums/order-direction.enum"
-import PaginatedAuthorListItemDto from "@/application/authors/queries/paginated-author-list-item.dto"
+import PaginatedAuthorListItemDto from "@/application/authors/queries/getPaginated/paginated-author-list-item.dto"
 
 export const getPaginatedAuthors = (authorsRepository: IAuthorsRepository) => async (
   pageIndex: number = 1,
