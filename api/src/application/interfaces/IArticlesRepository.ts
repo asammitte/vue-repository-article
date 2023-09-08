@@ -5,8 +5,8 @@ export interface IPaginatedArticleItem {
   id: number
   title: string
   content: string
-  first_name: string
-  last_name: string
+  firstName: string
+  lastName: string
   likes: number
 }
 
