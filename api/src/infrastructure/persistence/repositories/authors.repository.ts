@@ -15,18 +15,36 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
     const offset = (pageIndex - 1) * pageSize
     const direction = orderDirection == OrderDirectionEnum.Asc ? 'ASC' : 'DESC'
 
+    let sortfieldParam = ''
+    switch (sortfield) {
+      case AuthorSortfieldEnum.FirstName:
+        sortfieldParam = 'firstName'
+        break
+      case AuthorSortfieldEnum.LastName:
+        sortfieldParam = 'lastName'
+        break
+      case AuthorSortfieldEnum.Rating:
+        sortfieldParam = 'rating'
+        break
+      case AuthorSortfieldEnum.Id:
+        sortfieldParam = 'id'
+        break
+      default:
+        const exhaustiveCheck: never = sortfield
+        throw new Error(exhaustiveCheck)
+    }
+
     const response = await this.db.query<IPaginatedAuthorItem>(`\
       SELECT authors.id AS id, first_name AS firstName, last_name AS lastName, likes AS rating \
       FROM authors \
       JOIN statistics ON authors.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Author} \ 
-      ORDER BY :sortfield ${direction} \
+      ORDER BY ${sortfieldParam} ${direction} \
       LIMIT :limit OFFSET :offset \
     `, { 
       type: QueryTypes.SELECT,
       replacements: {
         offset: offset,
-        limit: pageSize,
-        sortfield: sortfield
+        limit: pageSize
       }
     })
 

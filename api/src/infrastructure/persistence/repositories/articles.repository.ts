@@ -15,19 +15,31 @@ export default class ArticlesRepository extends BaseRepository implements IArtic
     const offset = (pageIndex - 1) * pageSize
     const direction = orderDirection == OrderDirectionEnum.Asc ? 'ASC' : 'DESC'
 
+    let sortfieldParam = ''
+    switch (sortfield) {
+      case ArticleSortfieldEnum.Id:
+        sortfieldParam = 'id'
+        break
+      case ArticleSortfieldEnum.Title:
+        sortfieldParam = 'title'
+        break
+      default:
+        const exhaustiveCheck: never = sortfield
+        throw new Error(exhaustiveCheck)
+    }
+
     const response = await this.db.query<IPaginatedArticleItem>(`\
         SELECT articles.id AS id, title, content, first_name AS firstName, last_name AS lastName, likes \
         FROM articles \
         JOIN authors au ON articles.author_id = au.id \
         JOIN statistics ON articles.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Article} \ 
-        ORDER BY :sortfield ${direction} \
+        ORDER BY ${sortfield} ${direction} \
         LIMIT :limit OFFSET :offset \
     `, { 
       type: QueryTypes.SELECT,
       replacements: {
         offset: offset,
-        limit: pageSize,
-        sortfield: sortfield
+        limit: pageSize
       }
     })
 
