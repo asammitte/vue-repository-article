@@ -8,21 +8,33 @@ interface IProps{
 
 const props = defineProps<IProps>()
 
-const userInitials = computed(() => props.article.authorName.substring(0, 2))
+const getDescription = computed(() => {
+  const size = 80
+  const source = props.article.content
+  return source.length > size ? source.slice(0, size - 1) + "…" : source
+})
 </script>
 
 <template>
   <div class="item">
-    <div class="article-avatar-wrapper">
+    <!-- <div class="article-avatar-wrapper">
       <div class="article-avatar">
         {{  userInitials }}
       </div>
-    </div>
+    </div> -->
     <div class="article-details">
       <h3>
-        <slot name="heading"></slot>
+        {{ article.title }}
       </h3>
-      <slot></slot>
+      <div>
+        <div>
+          {{ getDescription }}
+        </div>
+        <div class="article-props">
+          <div class="article-prop">Author: <b>{{ article.authorName }}</b></div>
+          <div class="article-prop">Likes: <b>{{ article.totalLikes }}</b></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +51,7 @@ const userInitials = computed(() => props.article.authorName.substring(0, 2))
 
 .article-details {
   flex: 1;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .article-avatar-wrapper {
@@ -64,6 +76,20 @@ h3 {
   font-weight: 500;
   margin-bottom: 0.4rem;
   color: var(--color-heading);
+}
+
+.article-prop {
+  display: inline-block;
+  padding: 0 1rem;
+  font-size: 0.8rem;
+}
+
+.article-prop:first-child {
+  padding-left: 0;
+}
+
+.article-prop:not(:first-child) {
+  border-left: 1px solid var(--color-border);
 }
 
 @media (min-width: 1024px) {
