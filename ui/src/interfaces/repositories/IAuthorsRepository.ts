@@ -9,4 +9,6 @@ export interface IAuthorsRepository {
       sortfield?: AuthorSortfieldEnum,
       orderDirection?: OrderDirectionEnum
     ) => Promise<IAuthorListItem[]>
+
+  getPopular: (amount?: number) => Promise<IAuthorListItem[]>
 }

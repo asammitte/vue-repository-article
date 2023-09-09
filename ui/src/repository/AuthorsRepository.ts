@@ -22,4 +22,8 @@ export class AuthorsRepository extends Repository implements IAuthorsRepository 
       }
     )
   }
+
+  async getPopular(amount: number = 5): Promise<IAuthorListItem[]> {
+    return await this.getAll(1, amount, AuthorSortfieldEnum.Rating, OrderDirectionEnum.Desc)
+  }
 }
