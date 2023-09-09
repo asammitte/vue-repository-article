@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ArticlesList from '@/components/articles/ArticlesList.vue'
-import TopAuthors from '@/components/authors/TopAuthors.vue';
+import PopularAuthors from '@/components/authors/PopularAuthors.vue'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import TopAuthors from '@/components/authors/TopAuthors.vue';
       <ArticlesList />
     </div>
     <div class="page-content-right">
-      <TopAuthors />
+      <PopularAuthors />
     </div>
   </div>
 </template>
