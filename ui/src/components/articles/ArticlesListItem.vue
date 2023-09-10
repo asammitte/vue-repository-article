@@ -41,12 +41,12 @@ const getDescription = computed(() => {
 
 <style scoped>
 .item {
-  margin-top: 2rem;
   display: flex;
   align-items: center;
   position: relative;
   border-bottom: 1px solid var(--color-border);
   cursor: default;
+  padding: 0.4rem 0 1rem 0;
 }
 
 .article-details {
@@ -95,7 +95,6 @@ h3 {
 @media (min-width: 1024px) {
   .item {
     margin-top: 0;
-    padding: 0.4rem 0 1rem 0;
   }
 
   i {
