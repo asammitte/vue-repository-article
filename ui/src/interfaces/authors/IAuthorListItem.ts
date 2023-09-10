@@ -3,4 +3,5 @@ export interface IAuthorListItem {
   firstName: string
   lastName: string
   rating: number
+  totalArticles: number
 }

@@ -23,12 +23,7 @@ a {
 }
 
 .page-content-right {
-  flex: 0;
-  min-width: fit-content;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  height: fit-content;
-  margin-left: 2rem;
+  display: none;
 }
 
 @media (hover: hover) {
@@ -37,8 +32,14 @@ a {
   }
 }
 
-/* @media (min-width: 1024px) {
-  body {
-    display: flex;
+@media (min-width: 1024px) {
+  .page-content-right {
+    display: block;
+    flex: 0;
+    min-width: fit-content;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    height: fit-content;
+    margin-left: 2rem;
   }
-} */
+}
