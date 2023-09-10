@@ -2,6 +2,7 @@
 import type { IAuthorListItem } from '@/interfaces/authors/IAuthorListItem'
 import { useHttp } from '@/plugins/api'
 import { onMounted, ref } from 'vue'
+import AuthorAvatar from '@/components/authors/AuthorAvatar.vue'
 
 const api = useHttp()
 const popularAuthors = ref<IAuthorListItem[]>()
@@ -15,10 +16,6 @@ const fetchPopularAuthors = async (): Promise<void> => {
     .then(res => popularAuthors.value = res)
     .catch(ex => console.log(ex))
 }
-
-const userInitials = (firstName: string, lastName: string): string => {
-  return firstName.substring(0, 1) + lastName.substring(0, 1)
-}
 </script>
 
 <template>
@@ -27,10 +24,11 @@ const userInitials = (firstName: string, lastName: string): string => {
       POPULAR AUTHORS
     </div>
     <div class="popular-author-item" v-for="author in popularAuthors" :key="author.id">
-      <div class="article-avatar-wrapper">
-        <div class="article-avatar">
-          {{ userInitials(author.firstName, author.lastName) }}
-        </div>
+      <div class="author-avatar-wrapper">
+        <AuthorAvatar
+          :first-name="author.firstName"
+          :last-name="author.lastName"
+        />
       </div>
       <div>
         {{ author.firstName }} {{ author.lastName }}
@@ -60,21 +58,8 @@ const userInitials = (firstName: string, lastName: string): string => {
 }
 
 
-.article-avatar-wrapper {
+.author-avatar-wrapper {
   flex: 0;
-}
-
-.article-avatar {
-  display: flex;
-  place-items: center;
-  place-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  text-transform: uppercase;
   margin-right: 1rem;
-
-  color: black;
-  background-color: var(--color-border-hover);
 }
 </style>
