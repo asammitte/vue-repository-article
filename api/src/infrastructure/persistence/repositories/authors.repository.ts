@@ -35,9 +35,16 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
     }
 
     const response = await this.db.query<IPaginatedAuthorItem>(`\
-      SELECT authors.id AS id, first_name AS firstName, last_name AS lastName, likes AS rating \
+      SELECT \
+        authors.id AS id, \
+        first_name AS firstName, \
+        last_name AS lastName, \
+        likes AS rating, \
+        COUNT(DISTINCT articles.id) AS totalArticles \
       FROM authors \
       JOIN statistics ON authors.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Author} \ 
+      LEFT JOIN articles ON articles.author_id = authors.id \
+      GROUP BY authors.id \
       ORDER BY ${sortfieldParam} ${direction} \
       LIMIT :limit OFFSET :offset \
     `, { 

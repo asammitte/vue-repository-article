@@ -6,6 +6,7 @@ export interface IPaginatedAuthorItem {
   firstName: string
   lastName: string
   rating: number
+  totalArticles: number
 }
 
 export interface IAuthorsRepository {

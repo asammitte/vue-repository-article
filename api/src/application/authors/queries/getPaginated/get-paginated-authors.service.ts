@@ -14,7 +14,7 @@ export const getPaginatedAuthors = (authorsRepository: IAuthorsRepository) => as
   const authors: PaginatedAuthorListItemDto[] = []
   source.forEach(a => {
     const author = new PaginatedAuthorListItemDto(
-      a.id, a.firstName, a.lastName, a.rating
+      a.id, a.firstName, a.lastName, a.rating, a.totalArticles
     )
     authors.push(author)
   })
