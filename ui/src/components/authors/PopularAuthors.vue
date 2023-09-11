@@ -40,7 +40,7 @@ const fetchPopularAuthors = async (): Promise<void> => {
 
 <style scoped>
 .c-top-authors {
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 
 .top-authors-header {
