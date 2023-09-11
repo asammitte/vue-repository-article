@@ -3,18 +3,31 @@ import AuthorSortfieldEnum from "@/domain/enums/author-sortfield.enum"
 import { badRequestError, internalServerError } from "@/presentation/apidoc/docs/errors.doc"
 
 const paginatedAuthorItemResponse = {
-  id: {
-    type: 'int',
-    example: 1,
+  type: 'object',
+  properties: {
+    id: {
+      type: 'int',
+    },
+    firstName: {
+      type: 'string',
+    },
+    lastName: {
+      type: 'string',
+    },
+    rating: {
+      type: 'int',
+    },
+    totalArticles: {
+      type: 'int',
+    }
   },
-  name: {
-    type: 'string',
-    example: 'LG',
-  },
-  rating: {
-    type: 'int',
-    example: '3',
-  },
+  example: {
+    "id": 7,
+    "firstName": "Grace",
+    "lastName": "Miller",
+    "rating": 412,
+    "totalArticles": 4
+  }
 }
 
 const getPaginatedAuthors = {
@@ -70,10 +83,7 @@ const getPaginatedAuthors = {
         'application/json': {
           schema: {
             type: 'array',
-            items: {
-              type: 'object',
-              properties: paginatedAuthorItemResponse,
-            },
+            items: paginatedAuthorItemResponse
           },
         },
       },

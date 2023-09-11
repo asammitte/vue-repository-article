@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import { getPaginatedArticles } from '@/presentation/modules/articles/docs/get-paginated-articles.doc'
+import { getPaginatedAuthors } from '@/presentation/modules/authors/docs/get-paginated-authors.doc'
 
 const apiDocumentationV2 = {
   openapi: '3.0.1',
@@ -32,6 +33,9 @@ const apiDocumentationV2 = {
   paths: {
     '/articles': {
       get: getPaginatedArticles,
+    },
+    '/authors': {
+      get: getPaginatedAuthors,
     },
   },
 }

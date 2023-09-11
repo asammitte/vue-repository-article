@@ -3,18 +3,31 @@ import ArticleSortfieldEnum from "@/domain/enums/article-sortfield.enum"
 import { badRequestError, internalServerError } from "@/presentation/apidoc/docs/errors.doc"
 
 const paginatedArticleItemResponse = {
-  id: {
-    type: 'int',
-    example: 1,
+  type: 'object',
+  properties: {
+    id: {
+      type: 'int',
+    },
+    title: {
+      type: 'string',
+    },
+    content: {
+      type: 'string',
+    },
+    authorName: {
+      type: 'string',
+    },
+    totalLikes: {
+      type: 'int',
+    }
   },
-  name: {
-    type: 'string',
-    example: 'LG',
-  },
-  rating: {
-    type: 'int',
-    example: '3',
-  },
+  example: {
+    "id": 2,
+    "title": "A Journey Through Culinary Delights",
+    "content": "Embark on a culinary adventure around the world, savoring diverse flavors and aromas.",
+    "authorName": "Grace Miller",
+    "totalLikes": 328
+  }
 }
 
 const getPaginatedArticles = {
@@ -70,10 +83,7 @@ const getPaginatedArticles = {
         'application/json': {
           schema: {
             type: 'array',
-            items: {
-              type: 'object',
-              properties: paginatedArticleItemResponse,
-            },
+            items: paginatedArticleItemResponse
           },
         },
       },
