@@ -19,7 +19,7 @@ const fetchAuthors = async (): Promise<void> => {
 </script>
 
 <template>
-  <div class="c-page c-articles-page">
+  <div class="c-page c-authorss-page">
     <div class="page-content-main">
       <AuthorsList :authors="authors" />
     </div>
