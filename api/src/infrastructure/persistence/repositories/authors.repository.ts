@@ -57,7 +57,7 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
     return response
   }
 
-  public get = async (id: number = 7): Promise<IAuthorDetails | null> => {
+  public get = async (id: number): Promise<IAuthorDetails | null> => {
     const response = await this.db.query<IAuthorDetails>(`\
       SELECT \
         authors.id AS id, \
