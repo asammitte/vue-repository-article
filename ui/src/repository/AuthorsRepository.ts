@@ -3,6 +3,7 @@ import type { IAuthorListItem } from '@/interfaces/authors/IAuthorListItem'
 import { OrderDirectionEnum } from '@/enums/common/OrderDirectionEnum'
 import { Repository } from '@/repository/Repository'
 import AuthorSortfieldEnum from '@/enums/authors/AuthorSortfieldEnum'
+import type { IAuthorDetails } from '@/interfaces/authors/IAuthorDetails'
 
 export class AuthorsRepository extends Repository implements IAuthorsRepository {
   async getAll(
@@ -25,5 +26,9 @@ export class AuthorsRepository extends Repository implements IAuthorsRepository 
 
   async getPopular(amount: number = 5): Promise<IAuthorListItem[]> {
     return await this.getAll(1, amount, AuthorSortfieldEnum.Rating, OrderDirectionEnum.Desc)
+  }
+
+  async get(id: number): Promise<IAuthorDetails> {
+    return await this.call<IAuthorDetails>('GET', `/api/v1/authors/${id}`)
   }
 }
