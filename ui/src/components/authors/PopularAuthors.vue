@@ -31,8 +31,10 @@ const fetchPopularAuthors = async (): Promise<void> => {
         />
       </div>
       <div>
-        {{ author.firstName }} {{ author.lastName }}
-        <div class="author-rating">Rating: {{ author.rating }}</div>
+        <RouterLink :to="{name: 'authorDetails', params: { id: author.id }}">
+          {{ author.firstName }} {{ author.lastName }}
+        </RouterLink>
+        <!-- <div class="author-rating">Rating: {{ author.rating }}</div> -->
       </div>
     </div>
   </div>

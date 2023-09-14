@@ -29,7 +29,7 @@ export default class ArticlesRepository extends BaseRepository implements IArtic
     }
 
     const response = await this.db.query<IPaginatedArticleItem>(`\
-        SELECT articles.id AS id, title, content, first_name AS firstName, last_name AS lastName, likes \
+        SELECT articles.id AS id, title, content, au.id AS authorId, first_name AS firstName, last_name AS lastName, likes \
         FROM articles \
         JOIN authors au ON articles.author_id = au.id \
         JOIN statistics ON articles.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Article} \ 

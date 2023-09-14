@@ -3,7 +3,8 @@ export default class PaginatedArticleListItemDto {
     public id: number,
     public title: string,
     public content: string,
-    public authorName: string,
-    public totalLikes: number
+    public totalLikes: number,
+    public authorId: number,
+    public authorName: string
   ) {}
 }

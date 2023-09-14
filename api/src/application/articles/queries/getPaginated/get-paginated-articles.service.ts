@@ -14,7 +14,7 @@ const getArticles = (articlesRepository: IArticlesRepository) => async (
   const retVal: PaginatedArticleListItemDto[] = []
   source.forEach(a => {
     const articleItem = new PaginatedArticleListItemDto(
-      a.id, a.title, a.content, `${a.firstName} ${a.lastName}`, a.likes
+      a.id, a.title, a.content, a.likes, a.authorId, `${a.firstName} ${a.lastName}`
     )
     retVal.push(articleItem)
   })

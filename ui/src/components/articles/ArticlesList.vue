@@ -28,7 +28,13 @@ const getDescription = (source: string, size: number = 80): string => {
             {{ getDescription(article.content) }}
           </div>
           <div class="article-props">
-            <div class="article-prop">Author: <b>{{ article.authorName }}</b></div>
+            <div class="article-prop">
+              Author: <b>
+                <RouterLink :to="{name: 'authorDetails', params: { id: article.authorId }}">
+                  {{ article.authorName }}
+                </RouterLink>
+              </b>
+            </div>
             <div class="article-prop">Likes: <b>{{ article.totalLikes }}</b></div>
           </div>
         </div>
