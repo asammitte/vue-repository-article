@@ -3,10 +3,10 @@ if (!process.env.IS_TS_NODE) {
   require('module-alias/register')
 }
 
-import apiErrorHandler from '@/presentation/errors/api-error-handler'
-import express, { Express, json } from 'express'
-import { dbInit } from '@/infrastructure/persistence/databaseInit'
 import 'dotenv/config'
+import { dbInit } from '@/infrastructure/persistence/databaseInit'
+import express, { Express, json } from 'express'
+import apiErrorHandler from '@/presentation/errors/api-error-handler'
 import routes from '@/presentation/main.router'
 
 const app: Express = express()
