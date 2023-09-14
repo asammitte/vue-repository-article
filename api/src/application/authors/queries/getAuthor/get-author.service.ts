@@ -1,10 +1,10 @@
-import { IAuthorsRepository } from "@/application/interfaces/IAuthorsRepository";
-import AuthorDto from "./author.dto";
-import NotFoundError from "@/application/exceptions/not-found.error";
+import { IAuthorsRepository } from "@/application/interfaces/IAuthorsRepository"
+import AuthorDto from "@/application/authors/queries/getAuthor/author.dto"
+import NotFoundError from "@/application/exceptions/not-found.error"
 
 export const getAuthor = (authorsRepository: IAuthorsRepository) => async (
   authorId: number
-): Promise<AuthorDto | undefined> => {
+): Promise<AuthorDto> => {
   const source = await authorsRepository.get(authorId)
   if (source == null) {
     throw new NotFoundError('Author not found')
