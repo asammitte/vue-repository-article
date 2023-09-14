@@ -2,6 +2,7 @@ import { IGetPaginatedAuthors } from '@/presentation/modules/authors/requests/ge
 import { NextFunction, Request, Response } from "express";
 import AuthorsRepository from '@/infrastructure/persistence/repositories/authors.repository'
 import getPaginatedAuthors from '@/application/authors/queries/getPaginated/get-paginated-authors.service'
+import getAuthorDetails from '@/application/authors/queries/getAuthor/get-author.service'
 import getAuthor from '@/application/authors/queries/getAuthor/get-author.service'
 
 const getPaginated = {
@@ -35,7 +36,21 @@ const get = {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    // const { pageIndex, pageSize, sortfield, orderDirection } = req.route.id
+    const authorsRepository = new AuthorsRepository()
+    const authorsQuery = getAuthorDetails(authorsRepository)
+    try {
+      const response = await authorsQuery(+req.params.id)
+      res.json(response)
+    } catch(e) {
+      return next(e)
+    }
+  },
+
+  v2: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     const authorsRepository = new AuthorsRepository()
     const authorsQuery = getAuthor(authorsRepository)
     try {
