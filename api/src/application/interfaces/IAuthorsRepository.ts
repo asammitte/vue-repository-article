@@ -6,6 +6,13 @@ export interface IPaginatedAuthorItem {
   firstName: string
   lastName: string
   rating: number
+}
+
+export interface IAuthorDetails {
+  id: number
+  firstName: string
+  lastName: string
+  rating: number
   totalArticles: number
 }
 
@@ -16,4 +23,6 @@ export interface IAuthorsRepository {
     sortfield: AuthorSortfieldEnum,
     orderDirection: OrderDirectionEnum
   ) => Promise<IPaginatedAuthorItem[]>
+
+  get: (id: number) => Promise<IAuthorDetails | null>
 }

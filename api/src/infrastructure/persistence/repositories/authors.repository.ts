@@ -1,4 +1,4 @@
-import { IAuthorsRepository, IPaginatedAuthorItem } from '@/application/interfaces/IAuthorsRepository'
+import { IAuthorDetails, IAuthorsRepository, IPaginatedAuthorItem } from '@/application/interfaces/IAuthorsRepository'
 import { QueryTypes } from "sequelize"
 import AuthorSortfieldEnum from '@/domain/enums/author-sortfield.enum'
 import BaseRepository from '@/infrastructure/persistence/repositories/base.repository'
@@ -39,12 +39,11 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
         authors.id AS id, \
         first_name AS firstName, \
         last_name AS lastName, \
-        likes AS rating, \
-        COUNT(DISTINCT articles.id) AS totalArticles \
+        likes AS rating
       FROM authors \
       JOIN statistics ON authors.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Author} \ 
-      LEFT JOIN articles ON articles.author_id = authors.id \
-      GROUP BY authors.id \
+      /* LEFT JOIN articles ON articles.author_id = authors.id \
+      GROUP BY authors.id */ \
       ORDER BY ${sortfieldParam} ${direction} \
       LIMIT :limit OFFSET :offset \
     `, { 
@@ -54,6 +53,35 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
         limit: pageSize
       }
     })
+
+    return response
+  }
+
+  public get = async (id: number = 7): Promise<IAuthorDetails | null> => {
+    const response = await this.db.query<IAuthorDetails>(`\
+      SELECT \
+        authors.id AS id, \
+        first_name AS firstName, \
+        last_name AS lastName, \
+        likes AS rating, \
+        COUNT(articles.id) AS totalArticles \
+      FROM authors \
+      JOIN statistics ON authors.id = statistics.parent_id AND statistics.parent_type = ${StatisticTypeEnum.Author} \ 
+      LEFT JOIN articles ON articles.author_id = authors.id \
+      WHERE authors.id = :authorId
+    `, { 
+      type: QueryTypes.SELECT,
+      raw: true,
+      plain: true,
+      replacements: {
+        authorId: id
+      }
+    })
+
+    // First time use Sequelize and already hate it
+    if (response?.id == null) {
+      return null
+    }
 
     return response
   }
