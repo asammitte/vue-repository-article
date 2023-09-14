@@ -26,12 +26,12 @@ const props = defineProps<IProps>()
         <h3>
           {{ author.firstName }} {{ author.lastName }}
         </h3>
-        <div>
+        <!-- <div>
           <div class="author-props">
             <div class="author-prop">Articles: <b>{{ author.totalArticles }}</b></div>
             <div class="author-prop">Rating: <b>{{ author.rating }}</b></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
