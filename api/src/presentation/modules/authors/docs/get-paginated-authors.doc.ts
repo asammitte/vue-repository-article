@@ -16,17 +16,13 @@ const paginatedAuthorItemResponse = {
     },
     rating: {
       type: 'int',
-    },
-    totalArticles: {
-      type: 'int',
     }
   },
   example: {
     "id": 7,
     "firstName": "Grace",
     "lastName": "Miller",
-    "rating": 412,
-    "totalArticles": 4
+    "rating": 412
   }
 }
 
