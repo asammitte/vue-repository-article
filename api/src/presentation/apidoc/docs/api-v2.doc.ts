@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import { getEntityStatistics } from '@/presentation/modules/statistics/docs/get-entity-statistics.doc'
 import { getPaginatedArticles } from '@/presentation/modules/articles/docs/get-paginated-articles.doc'
 import { getPaginatedAuthors } from '@/presentation/modules/authors/docs/get-paginated-authors.doc'
 
@@ -37,6 +38,9 @@ const apiDocumentationV2 = {
     '/authors': {
       get: getPaginatedAuthors,
     },
+    '/statistics/{parentType}/{parentId}': {
+      get: getEntityStatistics
+    }
   },
 }
 
