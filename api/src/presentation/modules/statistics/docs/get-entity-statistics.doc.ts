@@ -26,7 +26,7 @@ const getEntityStatistics = {
     {
       name: 'parentType',
       in: 'path',
-      description: 'Entity type:',
+      description: 'Entity type',
       required: true,
       type: 'string',
       schema: {
