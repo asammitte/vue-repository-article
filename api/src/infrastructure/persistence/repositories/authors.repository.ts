@@ -1,4 +1,9 @@
-import { IAuthorDetails, IAuthorsRepository, IPaginatedAuthorItem } from '@/application/interfaces/IAuthorsRepository'
+import {
+  IAuthorInfo,
+  IAuthorWithStats,
+  IAuthorsRepository,
+  IPaginatedAuthorItem
+} from '@/application/interfaces/IAuthorsRepository'
 import { QueryTypes } from "sequelize"
 import AuthorSortfieldEnum from '@/domain/enums/author-sortfield.enum'
 import BaseRepository from '@/infrastructure/persistence/repositories/base.repository'
@@ -57,8 +62,8 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
     return response
   }
 
-  public get = async (id: number): Promise<IAuthorDetails | null> => {
-    const response = await this.db.query<IAuthorDetails>(`\
+  public getWithStats = async (id: number): Promise<IAuthorWithStats | null> => {
+    const response = await this.db.query<IAuthorWithStats>(`\
       SELECT \
         authors.id AS id, \
         first_name AS firstName, \
@@ -79,6 +84,30 @@ export default class AuthorsRepository extends BaseRepository implements IAuthor
     })
 
     // First time use Sequelize and already hate it
+    if (response?.id == null) {
+      return null
+    }
+
+    return response
+  }
+
+  public get = async (id: number): Promise<IAuthorInfo | null> => {
+    const response = await this.db.query<IAuthorInfo>(`\
+      SELECT \
+        authors.id AS id, \
+        first_name AS firstName, \
+        last_name AS lastName \
+      FROM authors \
+      WHERE authors.id = :authorId
+    `, { 
+      type: QueryTypes.SELECT,
+      raw: true,
+      plain: true,
+      replacements: {
+        authorId: id
+      }
+    })
+
     if (response?.id == null) {
       return null
     }

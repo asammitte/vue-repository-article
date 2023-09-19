@@ -8,12 +8,18 @@ export interface IPaginatedAuthorItem {
   rating: number
 }
 
-export interface IAuthorDetails {
+export interface IAuthorWithStats {
   id: number
   firstName: string
   lastName: string
   rating: number
   totalArticles: number
+}
+
+export interface IAuthorInfo {
+  id: number
+  firstName: string
+  lastName: string
 }
 
 export interface IAuthorsRepository {
@@ -24,5 +30,7 @@ export interface IAuthorsRepository {
     orderDirection: OrderDirectionEnum
   ) => Promise<IPaginatedAuthorItem[]>
 
-  get: (id: number) => Promise<IAuthorDetails | null>
+  getWithStats: (id: number) => Promise<IAuthorWithStats | null>
+
+  get: (id: number) => Promise<IAuthorInfo | null>
 }

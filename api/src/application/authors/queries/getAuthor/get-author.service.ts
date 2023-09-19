@@ -11,7 +11,7 @@ export const getAuthor = (authorsRepository: IAuthorsRepository) => async (
   }
 
   return new AuthorDto(
-    source.id, source.firstName, source.lastName, source.rating, source.totalArticles
+    source.id, source.firstName, source.lastName
   )
 }
 
